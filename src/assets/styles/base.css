@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Rufina-Regular';
+  src: url('../fonts/rufina/Rufina-Regular.eot');
+  src:
+    url('../fonts/rufina/Rufina-Regular.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/rufina/Rufina-Regular.woff2') format('woff2'),
+    url('../fonts/rufina/Rufina-Regular.woff') format('woff'),
+    url('../fonts/rufina/Rufina-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('../fonts/poppins/Poppins-Regular.eot');
+  src:
+    url('../fonts/poppins/Poppins-Regular.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/poppins/Poppins-Regular.woff2') format('woff2'),
+    url('../fonts/poppins/Poppins-Regular.woff') format('woff'),
+    url('../fonts/poppins/Poppins-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
