@@ -1,9 +1,9 @@
 <template>
-  <HeaderView />
+  <app-header />
 
-  <RouterView />
+  <router-view />
 </template>
 
 <script setup lang="ts">
-import HeaderView from './views/HeaderView.vue'
+import AppHeader from './components/AppHeader.vue'
 </script>

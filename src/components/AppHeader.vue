@@ -1,6 +1,6 @@
 <template>
-  <div
-    class="fixed bg-black text-slate-100 w-full transition-all duration-500 ease-in-out overflow-hidden lg:py-4 lg:flex lg:justify-around lg:overflow-visible lg:max-h-16"
+  <header
+    class="sticky w-full bg-black text-slate-100 transition-all duration-500 ease-in-out overflow-hidden lg:py-4 lg:flex lg:justify-around lg:overflow-visible lg:max-h-16"
     :class="header_class"
   >
     <button
@@ -53,7 +53,7 @@
         </li>
       </ul>
     </div>
-  </div>
+  </header>
 </template>
 
 <script setup lang="ts">
