@@ -1,7 +1,7 @@
 <template>
   <main>
     <section
-      class="relative welcome-section flex flex-col justify-center items-center pb-96 lg:pb-20"
+      class="relative welcome-section flex flex-col justify-center items-center pb-[780px] lg:pb-20"
     >
       <div class="flex justify-center items-center z-0 h-screen">
         <div class="font-poppins text-white text-center px-4 sm:px-12">
@@ -20,66 +20,90 @@
         </div>
       </div>
 
-      <div
-        class="absolute -bottom-96 rounded-sm bg-white w-3/4 z-0 shadow-lg py-10 px-4 lg:px-16 font-poppins lg:-bottom-32"
-      >
-        <form
-          class="flex flex-col justify-center items-center lg:flex-row lg:justify-between"
-          @submit.prevent="submitForm"
+      <div class="absolute container -bottom-32 flex justify-center">
+        <div
+          class="w-11/12 2xl:w-3/4 rounded-sm bg-white z-0 shadow-lg py-10 px-4 lg:px-16 font-poppins"
         >
-          <div class="w-full">
-            <app-form-select-box
-              name="year"
-              label="Select Year"
-              :options="year_options"
-            ></app-form-select-box>
-            <app-form-select-box
-              name="body-style"
-              label="Body Style"
-              :options="body_style_options"
-              main_class="mb-7 lg:mb-0"
-            ></app-form-select-box>
-          </div>
-          <div class="w-full">
-            <app-form-select-box
-              name="make"
-              label="Select Make"
-              :options="make_options"
-            ></app-form-select-box>
-            <app-form-select-box
-              name="car-condition"
-              label="Car Condition"
-              :options="car_condition_options"
-              main_class="mb-7 lg:mb-0"
-            ></app-form-select-box>
-          </div>
-          <div class="w-full">
-            <app-form-select-box
-              name="model"
-              label="Select Model"
-              :options="model_options"
-            ></app-form-select-box>
-            <app-form-select-box
-              name="price"
-              label="Select Price"
-              :options="price_options"
-              main_class="mb-7 lg:mb-0"
-            ></app-form-select-box>
-          </div>
-          <div>
-            <app-button
-              additional_classes="max-sm:text-sm"
-              text="Search"
-              type="submit"
-            ></app-button>
-          </div>
-        </form>
+          <form
+            class="flex flex-col justify-center items-center lg:flex-row lg:justify-between"
+            @submit.prevent="submitForm"
+          >
+            <div class="w-full">
+              <app-form-select-box
+                name="year"
+                label="Select Year"
+                :options="year_options"
+              ></app-form-select-box>
+              <app-form-select-box
+                name="body-style"
+                label="Body Style"
+                :options="body_style_options"
+                main_class="mb-7 lg:mb-0"
+              ></app-form-select-box>
+            </div>
+            <div class="w-full">
+              <app-form-select-box
+                name="make"
+                label="Select Make"
+                :options="make_options"
+              ></app-form-select-box>
+              <app-form-select-box
+                name="car-condition"
+                label="Car Condition"
+                :options="car_condition_options"
+                main_class="mb-7 lg:mb-0"
+              ></app-form-select-box>
+            </div>
+            <div class="w-full">
+              <app-form-select-box
+                name="model"
+                label="Select Model"
+                :options="model_options"
+              ></app-form-select-box>
+              <app-form-select-box
+                name="price"
+                label="Select Price"
+                :options="price_options"
+                main_class="mb-7 lg:mb-0"
+              ></app-form-select-box>
+            </div>
+            <div>
+              <app-button
+                additional_classes="max-sm:text-sm"
+                text="Search"
+                type="submit"
+              ></app-button>
+            </div>
+          </form>
+        </div>
       </div>
     </section>
 
-    <section>
-      <div class="service-content">
-        
+    <section class="container mx-auto mt-64 mb-24">
+      <!-- With Flex : class="flex flex-wrap justify-center px-4 md:justify-normal lg:justify-center" -->
+      <!-- With Grid : class="grid grid-cols-3 gap-4 auto-rows-max" -->
+      <div class="flex flex-wrap justify-center px-4 md:justify-normal lg:justify-center">
+        <app-post-card
+          svg_class="lnr-car"
+          svg_xlink="#lnr-car"
+          heading_content="Largest Dealership <span> of</span> Car"
+          heading_link="#"
+          main_content="Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut den fugit sed quia."
+        ></app-post-card>
+        <app-post-card
+          svg_class="lnr-bus"
+          svg_xlink="#lnr-bus"
+          heading_content="Largest Dealership <span> of</span> Bus"
+          heading_link="#"
+          main_content="Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut den fugit sed quia!"
+        ></app-post-card>
+        <app-post-card
+          svg_class="lnr-train"
+          svg_xlink="#lnr-train"
+          heading_content="Largest Dealership <span> of</span> Train"
+          heading_link="#"
+          main_content="Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut den fugit sed quia?"
+        ></app-post-card>
       </div>
     </section>
   </main>
@@ -88,6 +112,7 @@
 <script setup lang="ts">
 import AppButton from '../components/AppButton.vue'
 import AppFormSelectBox from '../components/AppFormSelectBox.vue'
+import AppPostCard from '../components/AppPostCard.vue'
 
 const year_options: string[] = ['Year', '2045', '2044', '2043']
 const body_style_options: string[] = ['Style', 'Sedan', 'Van', 'RoadSter']

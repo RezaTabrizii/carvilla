@@ -6,6 +6,9 @@ export default {
       fontFamily: {
         rufina: ['Rufina-Regular'],
         poppins: ['Poppins']
+      },
+      padding: {
+        '780px': '780px'
       }
     }
   },
