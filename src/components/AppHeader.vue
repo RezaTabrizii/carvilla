@@ -74,37 +74,29 @@ const btn_toggle_xlink_href = computed(() => {
   return is_navbar_closed.value === true ? '#lnr-menu' : '#lnr-cross'
 })
 
-const static_header_class = computed(() => {
-  return is_static_header.value === true ? 'bg-black' : 'bg-transparent px-6'
-})
-
 function toggleNavbar() {
   is_navbar_closed.value = !is_navbar_closed.value
 }
 
-const handleScroll = () => {
+const handleResizeAndScroll = () => {
   if (window.innerWidth < 1024) is_static_header.value = true
   else if (window.scrollY >= 100) is_static_header.value = true
   else is_static_header.value = false
 }
 
-const handleResize = () => {
-  if (window.innerWidth < 1024) is_static_header.value = true
-  else if (window.scrollY >= 100) is_static_header.value = true
-  else is_static_header.value = false
-}
+const static_header_class = computed(() => {
+  return is_static_header.value === true ? 'bg-black' : 'bg-transparent px-6'
+})
 
 onMounted(() => {
-  if (window.innerWidth < 1024) is_static_header.value = true
-  else if (window.scrollY >= 100) is_static_header.value = true
-  else is_static_header.value = false
+  handleResizeAndScroll()
 
-  window.addEventListener('scroll', handleScroll)
-  window.addEventListener('resize', handleResize)
+  window.addEventListener('scroll', handleResizeAndScroll)
+  window.addEventListener('resize', handleResizeAndScroll)
 })
 
 onUnmounted(() => {
-  window.removeEventListener('scroll', handleScroll)
-  window.removeEventListener('resize', handleResize)
+  window.removeEventListener('scroll', handleResizeAndScroll)
+  window.removeEventListener('resize', handleResizeAndScroll)
 })
 </script>

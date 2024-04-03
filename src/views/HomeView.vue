@@ -106,6 +106,44 @@
         ></app-post-card>
       </div>
     </section>
+
+    <section class="bg-slate-100 py-28">
+      <div class="container mx-auto overflow-hidden">
+        <app-section-header
+          header_content="newest cars"
+          paragraph_content="checkout <span class='lowercase'>the</span> latest cars"
+        ></app-section-header>
+
+        <app-full-item-carousel
+          :items_count="cars.length"
+          :have_auto_slide="true"
+          :have_footer_buttons="true"
+        >
+          <div v-for="(car, index) in cars" :key="index" class="flex-grow-0 flex-shrink-0 w-full">
+            <div
+              class="flex flex-col items-center px-4 mx-auto max-w-sm sm:px-0 sm:max-w-md sm:mx-auto lg:flex-row lg:max-w-full lg:mx-0"
+            >
+              <div class="w-full lg:w-7/12 lg:px-6 flex justify-center">
+                <img :src="car.image" alt="img" />
+              </div>
+              <div class="my-4 font-poppins select-none w-full lg:w-5/12 lg:px-6">
+                <h2 class="capitalize mb-6 text-3xl font-semibold text-gray-600">
+                  <a :href="car.detailsLink"> {{ car.title }} </a>
+                </h2>
+                <p class="text-base text-gray-500">
+                  {{ car.description }}
+                </p>
+                <p class="text-base text-gray-500 mt-7">
+                  Sed ut pers unde omnis iste natus error sit voluptatem accusantium doloremque
+                  laudantium.
+                </p>
+                <app-button text="View Details" additional_classes="mt-8"></app-button>
+              </div>
+            </div>
+          </div>
+        </app-full-item-carousel>
+      </div>
+    </section>
   </main>
 </template>
 
@@ -113,6 +151,11 @@
 import AppButton from '../components/AppButton.vue'
 import AppFormSelectBox from '../components/AppFormSelectBox.vue'
 import AppPostCard from '../components/AppPostCard.vue'
+import AppSectionHeader from '../components/AppSectionHeader.vue'
+import AppFullItemCarousel from '../components/AppFullItemCarousel.vue'
+import newCarsImgSrc1 from '../assets/images/new-cars-model/ncm1.png'
+import newCarsImgSrc2 from '../assets/images/new-cars-model/ncm2.png'
+import newCarsImgSrc3 from '../assets/images/new-cars-model/ncm3.png'
 
 const year_options: string[] = ['Year', '2045', '2044', '2043']
 const body_style_options: string[] = ['Style', 'Sedan', 'Van', 'RoadSter']
@@ -120,6 +163,29 @@ const make_options: string[] = ['Make', 'Toyota', 'Holden', 'Maecedes-Benz']
 const car_condition_options: string[] = ['Condition', 'Ok', 'Broken', 'Not Exist']
 const model_options: string[] = ['Model', 'Kia-Rio', 'Mitsubishi', 'Ford']
 const price_options: string[] = ['Price', '$2500', '$5000', '$7500']
+const cars = [
+  {
+    title: 'chevrolet camaro za100',
+    image: newCarsImgSrc1,
+    detailsLink: '#1',
+    description:
+      'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+  },
+  {
+    title: 'BMW series-3 wagon',
+    image: newCarsImgSrc2,
+    detailsLink: '#2',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, libero sint veniam, facilis accusamus sunt pariatur maiores nemo fugit magni ipsam repudiandae atque consequatur distinctio debitis? Doloribus cum aut id omnis natus facilis ipsam veritatis.'
+  },
+  {
+    title: 'ferrari 488 superfast',
+    image: newCarsImgSrc3,
+    detailsLink: '#3',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam voluptas omnis aperiam debitis consequatur fuga eos laboriosam, ipsam quaerat corporis, in provident illo, delectus exercitationem! Ab, numquam alias? Deleniti, dolor.'
+  }
+]
 
 function submitForm(event: any) {
   const formData = new FormData(event.target)

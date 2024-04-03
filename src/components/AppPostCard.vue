@@ -11,7 +11,7 @@
 
       <h2 class="mt-9 mb-5">
         <a
-          class="text-xl font-bold cursor-pointer text-center text-gray-700 group-hover:text-slate-100"
+          class="text-xl text-nowrap font-bold cursor-pointer text-center text-gray-700 group-hover:text-slate-100"
           :href="heading_link"
           v-html="heading_content"
         >
