@@ -16,7 +16,8 @@
     :class="`w-full flex justify-center items-center ${footer_spacing}`"
   >
     <div
-      :class="`hover:bg-${footer_color_classes} ${footer_items_size} rounded-full border-2 border-${footer_color_classes} mx-1 cursor-pointer transition-all duration-500 ${index === currentIndex ? `bg-${footer_color_classes}` : ''}`"
+      class="rounded-full border-2 mx-1 cursor-pointer transition-all duration-500"
+      :class="`${footer_items_size} ${footer_color_classes} ${index === currentIndex ? `${footer_bg_color_class}` : ''}`"
       v-for="(i, index) in items_count"
       :key="index"
       @click="manualSlide(index)"
@@ -65,7 +66,12 @@ const props = defineProps({
   footer_color_classes: {
     type: String,
     required: false,
-    default: 'blue-600'
+    default: 'hover:bg-blue-600 border-blue-600'
+  },
+  footer_bg_color_class: {
+    type: String,
+    required: false,
+    default: 'bg-blue-600'
   },
   footer_items_size: {
     type: String,

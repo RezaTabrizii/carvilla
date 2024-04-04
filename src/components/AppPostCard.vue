@@ -9,7 +9,7 @@
         </svg>
       </div>
 
-      <h2 class="mt-9 mb-5">
+      <h2 class="mt-9 mb-5 w-full text-center truncate">
         <a
           class="text-xl text-nowrap font-bold cursor-pointer text-center text-gray-700 group-hover:text-slate-100"
           :href="heading_link"
@@ -19,10 +19,11 @@
       </h2>
 
       <p
-        class="relative select-none text-gray-500 text-base text-center leading-relaxed pb-9 group-hover:text-slate-100"
+        class="select-none text-gray-500 text-base text-center leading-relaxed group-hover:text-slate-100 truncate-lines-3"
       >
         {{ main_content }}
       </p>
+      <span class="relative pb-9 w-full"></span>
     </div>
   </div>
 </template>
@@ -53,19 +54,19 @@ defineProps({
 </script>
 
 <style scoped>
-.single-service-item p:before {
+.single-service-item span:before {
   border-radius: 3px;
   position: absolute;
   content: '';
   width: 20px;
   height: 3px;
   background: #3030ea;
-  bottom: 0;
+  bottom: 0px;
   left: 50%;
   margin-left: -10px;
 }
 
-.single-service-item:hover p:before {
+.single-service-item:hover span:before {
   background: #fff;
 }
 </style>

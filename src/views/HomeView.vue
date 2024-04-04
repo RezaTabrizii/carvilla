@@ -4,7 +4,7 @@
       class="relative welcome-section flex flex-col justify-center items-center pb-[780px] lg:pb-20"
     >
       <div class="flex justify-center items-center z-0 h-screen">
-        <div class="font-poppins text-white text-center px-4 sm:px-12">
+        <div class="font-poppins text-white text-center px-4 sm:px-12 select-none">
           <h2 class="text-3xl font-bold uppercase mb-11 leading-relaxed md:text-4xl">
             get your desired car in resonable price
           </h2>
@@ -80,15 +80,13 @@
     </section>
 
     <section class="container mx-auto mt-64 mb-24">
-      <!-- With Flex : class="flex flex-wrap justify-center px-4 md:justify-normal lg:justify-center" -->
-      <!-- With Grid : class="grid grid-cols-3 gap-4 auto-rows-max" -->
       <div class="flex flex-wrap justify-center px-4 md:justify-normal lg:justify-center">
         <app-post-card
           svg_class="lnr-car"
           svg_xlink="#lnr-car"
           heading_content="Largest Dealership <span> of</span> Car"
           heading_link="#"
-          main_content="Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut den fugit sed quia."
+          main_content="Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut den fugit sed quia. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut den fugit sed quia."
         ></app-post-card>
         <app-post-card
           svg_class="lnr-bus"
@@ -144,6 +142,29 @@
         </app-full-item-carousel>
       </div>
     </section>
+
+    <section class="py-28">
+      <div class="container mx-auto">
+        <app-section-header
+          header_content="featured cars"
+          paragraph_content="checkout <span>the</span> featured cars"
+        ></app-section-header>
+
+        <div class="flex flex-wrap justify-center items-center gap-4 pt-24 px-4 sm:px-0">
+          <app-product-card
+            v-for="(product, index) in products"
+            :key="index"
+            :product_title="product.title"
+            :product_link="product.link"
+            :product_image="product.image"
+            :product_price="product.price"
+            :product_description="product.description"
+            :product_tags="product.tags"
+          >
+          </app-product-card>
+        </div>
+      </div>
+    </section>
   </main>
 </template>
 
@@ -153,9 +174,7 @@ import AppFormSelectBox from '../components/AppFormSelectBox.vue'
 import AppPostCard from '../components/AppPostCard.vue'
 import AppSectionHeader from '../components/AppSectionHeader.vue'
 import AppFullItemCarousel from '../components/AppFullItemCarousel.vue'
-import newCarsImgSrc1 from '../assets/images/new-cars-model/ncm1.png'
-import newCarsImgSrc2 from '../assets/images/new-cars-model/ncm2.png'
-import newCarsImgSrc3 from '../assets/images/new-cars-model/ncm3.png'
+import AppProductCard from '../components/AppProductCard.vue'
 
 const year_options: string[] = ['Year', '2045', '2044', '2043']
 const body_style_options: string[] = ['Style', 'Sedan', 'Van', 'RoadSter']
@@ -166,24 +185,79 @@ const price_options: string[] = ['Price', '$2500', '$5000', '$7500']
 const cars = [
   {
     title: 'chevrolet camaro za100',
-    image: newCarsImgSrc1,
+    image: '/images/new-cars-model/ncm1.png',
     detailsLink: '#1',
     description:
       'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
   },
   {
     title: 'BMW series-3 wagon',
-    image: newCarsImgSrc2,
+    image: '/images/new-cars-model/ncm2.png',
     detailsLink: '#2',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, libero sint veniam, facilis accusamus sunt pariatur maiores nemo fugit magni ipsam repudiandae atque consequatur distinctio debitis? Doloribus cum aut id omnis natus facilis ipsam veritatis.'
   },
   {
     title: 'ferrari 488 superfast',
-    image: newCarsImgSrc3,
+    image: '/images/new-cars-model/ncm3.png',
     detailsLink: '#3',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam voluptas omnis aperiam debitis consequatur fuga eos laboriosam, ipsam quaerat corporis, in provident illo, delectus exercitationem! Ab, numquam alias? Deleniti, dolor.'
+  }
+]
+const products = [
+  {
+    title: 'BMW 6-Series Gran Coupe',
+    link: '#',
+    image: '/images/featured-cars/fc1.png',
+    price: 85000,
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vitae ante vel eros fermentum faucibus sit amet euismod lorem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vitae ante vel eros fermentum faucibus sit amet euismod lorem.',
+    tags: [
+      'Model 2017 3100 Mi 240HP',
+      'automatic',
+      'automatic',
+      'automatic',
+      'automatic',
+      'automatic',
+      'automatic'
+    ]
+  },
+  {
+    title: 'BMW 6-Series Gran Coupe',
+    link: '#',
+    image: '/images/featured-cars/fc2.png',
+    price: 85000,
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vitae ante vel eros fermentum faucibus sit amet euismod lorem.',
+    tags: ['Model 2017 3100 Mi 240HP', 'automatic']
+  },
+  {
+    title: 'BMW 6-Series Gran Coupe',
+    link: '#',
+    image: '/images/featured-cars/fc3.png',
+    price: 85000,
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vitae ante vel eros fermentum faucibus sit amet euismod lorem.',
+    tags: ['Model 2017 3100 Mi 240HP', 'automatic']
+  },
+  {
+    title: 'BMW 6-Series Gran Coupe',
+    link: '#',
+    image: '/images/featured-cars/fc4.png',
+    price: 85000,
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vitae ante vel eros fermentum faucibus sit amet euismod lorem.',
+    tags: ['Model 2017 3100 Mi 240HP', 'automatic']
+  },
+  {
+    title: 'BMW 6-Series Gran Coupe',
+    link: '#',
+    image: '/images/featured-cars/fc5.png',
+    price: 85000,
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vitae ante vel eros fermentum faucibus sit amet euismod lorem.',
+    tags: ['Model 2017 3100 Mi 240HP', 'automatic']
   }
 ]
 

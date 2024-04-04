@@ -1,5 +1,5 @@
 <template>
-  <div class="relative text-center text-gray-700 font-poppins">
+  <div class="relative text-center text-gray-700 font-poppins select-none">
     <p v-if="paragraph_content != null" class="capitalize mb-2" v-html="paragraph_content"></p>
     <h2 class="relative font-semibold text-4xl pb-9 capitalize" v-html="header_content"></h2>
   </div>
