@@ -81,27 +81,84 @@
 
     <section class="container mx-auto mt-64 mb-24">
       <div class="flex flex-wrap justify-center px-4 md:justify-normal lg:justify-center">
-        <app-post-card
-          svg_class="lnr-car"
-          svg_xlink="#lnr-car"
-          heading_content="Largest Dealership <span> of</span> Car"
-          heading_link="#"
-          main_content="Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut den fugit sed quia. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut den fugit sed quia."
-        ></app-post-card>
-        <app-post-card
-          svg_class="lnr-bus"
-          svg_xlink="#lnr-bus"
-          heading_content="Largest Dealership <span> of</span> Bus"
-          heading_link="#"
-          main_content="Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut den fugit sed quia!"
-        ></app-post-card>
-        <app-post-card
-          svg_class="lnr-train"
-          svg_xlink="#lnr-train"
-          heading_content="Largest Dealership <span> of</span> Train"
-          heading_link="#"
-          main_content="Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut den fugit sed quia?"
-        ></app-post-card>
+        <app-post-card :have_zheget="true">
+          <template v-slot:image_part>
+            <svg class="lnr-car lnr size-16 fill-gray-600 group-hover:fill-slate-100">
+              <use xlink:href="#lnr-car"></use>
+            </svg>
+          </template>
+          <template v-slot:first_part>
+            <h2 class="w-full truncate">
+              <a
+                class="text-xl text-nowrap font-bold cursor-pointer text-center text-gray-700 group-hover:text-slate-100"
+                href="#"
+                v-html="`Largest Dealership <span> of</span> Car`"
+              >
+              </a>
+            </h2>
+          </template>
+          <template v-slot:second_part>
+            <p
+              class="select-none text-gray-500 text-base text-center leading-relaxed truncate-lines-3 group-hover:text-slate-100"
+            >
+              Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut den fugit sed
+              quia. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut den fugit
+              sed quia.
+            </p>
+          </template>
+        </app-post-card>
+        <app-post-card :have_zheget="true">
+          <template v-slot:image_part>
+            <svg class="lnr-bus lnr size-16 fill-gray-600 group-hover:fill-slate-100">
+              <use xlink:href="#lnr-bus"></use>
+            </svg>
+          </template>
+          <template v-slot:first_part>
+            <h2 class="w-full truncate">
+              <a
+                class="text-xl text-nowrap font-bold cursor-pointer text-center text-gray-700 group-hover:text-slate-100"
+                href="#"
+                v-html="`Largest Dealership <span> of</span> Bus`"
+              >
+              </a>
+            </h2>
+          </template>
+          <template v-slot:second_part>
+            <p
+              class="select-none text-gray-500 text-base text-center leading-relaxed truncate-lines-3 group-hover:text-slate-100"
+            >
+              Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut den fugit sed
+              quia. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut den fugit
+              sed quia.
+            </p>
+          </template>
+        </app-post-card>
+        <app-post-card :have_zheget="true">
+          <template v-slot:image_part>
+            <svg class="lnr-train lnr size-16 fill-gray-600 group-hover:fill-slate-100">
+              <use xlink:href="#lnr-train"></use>
+            </svg>
+          </template>
+          <template v-slot:first_part>
+            <h2 class="w-full truncate">
+              <a
+                class="text-xl text-nowrap font-bold cursor-pointer text-center text-gray-700 group-hover:text-slate-100"
+                href="#"
+                v-html="`Largest Dealership <span> of</span> Train`"
+              >
+              </a>
+            </h2>
+          </template>
+          <template v-slot:second_part>
+            <p
+              class="select-none text-gray-500 text-base text-center leading-relaxed truncate-lines-3 group-hover:text-slate-100"
+            >
+              Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut den fugit sed
+              quia. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut den fugit
+              sed quia.
+            </p>
+          </template>
+        </app-post-card>
       </div>
     </section>
 
@@ -112,7 +169,7 @@
           paragraph_content="checkout <span class='lowercase'>the</span> latest cars"
         ></app-section-header>
 
-        <app-full-item-carousel
+        <app-regular-carousel
           :items_count="cars.length"
           :have_auto_slide="true"
           :have_footer_buttons="true"
@@ -139,7 +196,7 @@
               </div>
             </div>
           </div>
-        </app-full-item-carousel>
+        </app-regular-carousel>
       </div>
     </section>
 
@@ -165,23 +222,243 @@
         </div>
       </div>
     </section>
+
+    <section class="bg-slate-100 py-28">
+      <div class="container mx-auto">
+        <app-section-header header_content="what our clients say"></app-section-header>
+
+        <div class="pt-24 px-4 flex justify-center">
+          <swiper
+            :slidesPerView="3"
+            :spaceBetween="30"
+            :loop="true"
+            :modules="modules"
+            class="mySwiper"
+          >
+            <swiper-slide>
+              <app-post-card :have_zheget="false" box_size_classes="bg-slate-100 w-full">
+                <template v-slot:image_part>
+                  <img src="../assets/images/clients/c1.png" />
+                </template>
+                <template v-slot:first_part>
+                  <p
+                    class="select-none text-gray-500 text-center text-base truncate-lines-4 group-hover:text-slate-100"
+                  >
+                    Sed ut pers unde omnis iste natus error sit voluptatem accusantium dolor laudan
+                    rem aperiam, eaque ipsa quae ab illo inventore verit.
+                  </p>
+                </template>
+                <template v-slot:second_part>
+                  <h2
+                    class="select-none text-gray-600 text-center text-base font-bold truncate group-hover:text-slate-100"
+                  >
+                    Tomas Lili
+                  </h2>
+                  <h4
+                    class="select-none text-gray-600 text-center text-base font-bold truncate group-hover:text-slate-100"
+                  >
+                    New York
+                  </h4>
+                </template>
+              </app-post-card>
+            </swiper-slide>
+            <swiper-slide>
+              <app-post-card :have_zheget="false" box_size_classes="bg-slate-100 w-full">
+                <template v-slot:image_part>
+                  <img src="../assets/images/clients/c2.png" />
+                </template>
+                <template v-slot:first_part>
+                  <p
+                    class="select-none text-gray-500 text-center text-base truncate-lines-4 group-hover:text-slate-100"
+                  >
+                    Sed ut pers unde omnis iste natus error sit voluptatem accusantium dolor laudan
+                    rem aperiam, eaque ipsa quae ab illo inventore verit.
+                  </p>
+                </template>
+                <template v-slot:second_part>
+                  <h2
+                    class="select-none text-gray-600 text-center text-base font-bold truncate group-hover:text-slate-100"
+                  >
+                    Tomas Lili
+                  </h2>
+                  <h4
+                    class="select-none text-gray-600 text-center text-base font-bold truncate group-hover:text-slate-100"
+                  >
+                    New York
+                  </h4>
+                </template>
+              </app-post-card>
+            </swiper-slide>
+            <swiper-slide>
+              <app-post-card :have_zheget="false" box_size_classes="bg-slate-100 w-full">
+                <template v-slot:image_part>
+                  <img src="../assets/images/clients/c3.png" />
+                </template>
+                <template v-slot:first_part>
+                  <p
+                    class="select-none text-gray-500 text-center text-base truncate-lines-4 group-hover:text-slate-100"
+                  >
+                    Sed ut pers unde omnis iste natus error sit voluptatem accusantium dolor laudan
+                    rem aperiam, eaque ipsa quae ab illo inventore verit.
+                  </p>
+                </template>
+                <template v-slot:second_part>
+                  <h2
+                    class="select-none text-gray-600 text-center text-base font-bold truncate group-hover:text-slate-100"
+                  >
+                    Tomas Lili
+                  </h2>
+                  <h4
+                    class="select-none text-gray-600 text-center text-base font-bold truncate group-hover:text-slate-100"
+                  >
+                    New York
+                  </h4>
+                </template>
+              </app-post-card>
+            </swiper-slide>
+
+            <swiper-slide>
+              <app-post-card :have_zheget="false" box_size_classes="bg-slate-100 w-full">
+                <template v-slot:image_part>
+                  <img src="../assets/images/clients/c1.png" />
+                </template>
+                <template v-slot:first_part>
+                  <p
+                    class="select-none text-gray-500 text-center text-base truncate-lines-4 group-hover:text-slate-100"
+                  >
+                    Sed ut pers unde omnis iste natus error sit voluptatem accusantium dolor laudan
+                    rem aperiam, eaque ipsa quae ab illo inventore verit.
+                  </p>
+                </template>
+                <template v-slot:second_part>
+                  <h2
+                    class="select-none text-gray-600 text-center text-base font-bold truncate group-hover:text-slate-100"
+                  >
+                    Tomas Lili
+                  </h2>
+                  <h4
+                    class="select-none text-gray-600 text-center text-base font-bold truncate group-hover:text-slate-100"
+                  >
+                    New York
+                  </h4>
+                </template>
+              </app-post-card>
+            </swiper-slide>
+            <swiper-slide>
+              <app-post-card
+                class="bg-g"
+                :have_zheget="false"
+                box_size_classes="bg-slate-100 w-full"
+              >
+                <template v-slot:image_part>
+                  <img src="../assets/images/clients/c2.png" />
+                </template>
+                <template v-slot:first_part>
+                  <p
+                    class="select-none text-gray-500 text-center text-base truncate-lines-4 group-hover:text-slate-100"
+                  >
+                    Sed ut pers unde omnis iste natus error sit voluptatem accusantium dolor laudan
+                    rem aperiam, eaque ipsa quae ab illo inventore verit.
+                  </p>
+                </template>
+                <template v-slot:second_part>
+                  <h2
+                    class="select-none text-gray-600 text-center text-base font-bold truncate group-hover:text-slate-100"
+                  >
+                    Tomas Lili
+                  </h2>
+                  <h4
+                    class="select-none text-gray-600 text-center text-base font-bold truncate group-hover:text-slate-100"
+                  >
+                    New York
+                  </h4>
+                </template>
+              </app-post-card>
+            </swiper-slide>
+            <swiper-slide>
+              <app-post-card :have_zheget="false" box_size_classes="bg-slate-100 w-full">
+                <template v-slot:image_part>
+                  <img src="../assets/images/clients/c3.png" />
+                </template>
+                <template v-slot:first_part>
+                  <p
+                    class="select-none text-gray-500 text-center text-base truncate-lines-4 group-hover:text-slate-100"
+                  >
+                    Sed ut pers unde omnis iste natus error sit voluptatem accusantium dolor laudan
+                    rem aperiam, eaque ipsa quae ab illo inventore verit.
+                  </p>
+                </template>
+                <template v-slot:second_part>
+                  <h2
+                    class="select-none text-gray-600 text-center text-base font-bold truncate group-hover:text-slate-100"
+                  >
+                    Tomas Lili
+                  </h2>
+                  <h4
+                    class="select-none text-gray-600 text-center text-base font-bold truncate group-hover:text-slate-100"
+                  >
+                    New York
+                  </h4>
+                </template>
+              </app-post-card>
+            </swiper-slide>
+          </swiper>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-28">
+      <div class="container mx-auto">
+        <div class="px-4 flex justify-center">
+          <app-infinite-carousel :items_count="6" @item_width="set_width">
+            <a href="#" class="flex justify-center" :style="`width: ${items_width}px`">
+              <img class="h-20 w-36" src="/images/brand/br1.png" alt="" />
+            </a>
+            <a href="#" class="flex justify-center" :style="`width: ${items_width}px`">
+              <img class="h-20 w-36" src="/images/brand/br2.png" alt="" />
+            </a>
+            <a href="#" class="flex justify-center" :style="`width: ${items_width}px`">
+              <img class="h-20 w-36" src="/images/brand/br3.png" alt="" />
+            </a>
+            <a href="#" class="flex justify-center" :style="`width: ${items_width}px`">
+              <img class="h-20 w-36" src="/images/brand/br4.png" alt="" />
+            </a>
+            <a href="#" class="flex justify-center" :style="`width: ${items_width}px`">
+              <img class="h-20 w-36" src="/images/brand/br5.png" alt="" />
+            </a>
+            <a href="#" class="flex justify-center" :style="`width: ${items_width}px`">
+              <img class="h-20 w-36" src="/images/brand/br6.png" alt="" />
+            </a>
+          </app-infinite-carousel>
+        </div>
+      </div>
+    </section>
   </main>
 </template>
 
 <script setup lang="ts">
+import { Swiper, SwiperSlide } from 'swiper/vue'
+import 'swiper/css'
+import 'swiper/css/pagination'
+import { Pagination } from 'swiper/modules'
+
 import AppButton from '../components/AppButton.vue'
 import AppFormSelectBox from '../components/AppFormSelectBox.vue'
 import AppPostCard from '../components/AppPostCard.vue'
 import AppSectionHeader from '../components/AppSectionHeader.vue'
-import AppFullItemCarousel from '../components/AppFullItemCarousel.vue'
+import AppRegularCarousel from '../components/AppRegularCarousel.vue'
 import AppProductCard from '../components/AppProductCard.vue'
+import AppInfiniteCarousel from '@/components/AppInfiniteCarousel.vue'
+import { ref } from 'vue'
 
+const modules = [Pagination]
 const year_options: string[] = ['Year', '2045', '2044', '2043']
 const body_style_options: string[] = ['Style', 'Sedan', 'Van', 'RoadSter']
 const make_options: string[] = ['Make', 'Toyota', 'Holden', 'Maecedes-Benz']
 const car_condition_options: string[] = ['Condition', 'Ok', 'Broken', 'Not Exist']
 const model_options: string[] = ['Model', 'Kia-Rio', 'Mitsubishi', 'Ford']
 const price_options: string[] = ['Price', '$2500', '$5000', '$7500']
+
 const cars = [
   {
     title: 'chevrolet camaro za100',
@@ -205,6 +482,7 @@ const cars = [
       'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam voluptas omnis aperiam debitis consequatur fuga eos laboriosam, ipsam quaerat corporis, in provident illo, delectus exercitationem! Ab, numquam alias? Deleniti, dolor.'
   }
 ]
+
 const products = [
   {
     title: 'BMW 6-Series Gran Coupe',
@@ -272,6 +550,11 @@ function submitForm(event: any) {
     formData.get('price')
   )
 }
+
+const items_width = ref<number>(0)
+const set_width = (width: number) => {
+  items_width.value = width
+}
 </script>
 
 <style scoped>
@@ -293,5 +576,20 @@ function submitForm(event: any) {
   width: 100%;
   height: 100%;
   background: rgba(42, 45, 84, 0.6);
+}
+
+/* .swiper {
+} */
+
+.swiper-slide {
+  min-width: 300px;
+  background-color: rgb(241 245 249);
+}
+
+@media (max-width: 767px) {
+  .swiper-slide {
+    min-width: 0px;
+    width: 100% !important;
+  }
 }
 </style>

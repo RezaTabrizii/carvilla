@@ -1,54 +1,35 @@
 <template>
-  <div class="max-w-96 w-full md:w-1/2 lg:w-1/3">
+  <div :class="box_size_classes" style="width: 100% !important">
     <div
       class="group single-service-item m-2 py-16 px-7 border border-gray-300 rounded-sm flex flex-col justify-center items-center font-poppins transition-all duration-500 hover:bg-blue-600 hover:shadow-md"
     >
       <div>
-        <svg class="lnr size-16 fill-gray-600 group-hover:fill-slate-100" :class="svg_class">
-          <use :xlink:href="svg_xlink"></use>
-        </svg>
+        <slot name="image_part"></slot>
       </div>
 
-      <h2 class="mt-9 mb-5 w-full text-center truncate">
-        <a
-          class="text-xl text-nowrap font-bold cursor-pointer text-center text-gray-700 group-hover:text-slate-100"
-          :href="heading_link"
-          v-html="heading_content"
-        >
-        </a>
-      </h2>
+      <div class="mt-9 mb-5 w-full text-center">
+        <slot name="first_part"></slot>
+      </div>
 
-      <p
-        class="select-none text-gray-500 text-base text-center leading-relaxed group-hover:text-slate-100 truncate-lines-3"
-      >
-        {{ main_content }}
-      </p>
-      <span class="relative pb-9 w-full"></span>
+      <div class="select-none text-center">
+        <slot name="second_part"></slot>
+      </div>
+
+      <span v-if="have_zheget" class="relative pb-9 w-full"></span>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 defineProps({
-  svg_class: {
-    type: String,
-    required: true
+  have_zheget: {
+    type: Boolean,
+    required: false
   },
-  svg_xlink: {
+  box_size_classes: {
     type: String,
-    required: true
-  },
-  heading_content: {
-    type: String,
-    required: true
-  },
-  heading_link: {
-    type: String,
-    required: true
-  },
-  main_content: {
-    type: String,
-    required: true
+    required: false,
+    default: 'max-w-96 w-full md:w-1/2 lg:w-1/3'
   }
 })
 </script>

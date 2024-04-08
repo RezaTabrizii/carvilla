@@ -81,3 +81,9 @@
     -webkit-box-orient: vertical;
   }
 }
+
+@keyframes move {
+  to {
+    transform: translateX(calc(-50%));
+  }
+}
