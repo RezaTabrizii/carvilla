@@ -1,6 +1,7 @@
 <template>
   <main>
     <section
+      id="home"
       class="relative welcome-section flex flex-col justify-center items-center pb-[780px] lg:pb-20"
     >
       <div class="flex justify-center items-center z-0 h-screen">
@@ -79,7 +80,7 @@
       </div>
     </section>
 
-    <section class="container mx-auto mt-64 mb-24">
+    <section id="service" class="container mx-auto mt-64 mb-24">
       <div class="flex flex-wrap justify-center px-4 md:justify-normal lg:justify-center">
         <app-post-card :have_zheget="true">
           <template v-slot:image_part>
@@ -162,7 +163,7 @@
       </div>
     </section>
 
-    <section class="bg-slate-100 py-28">
+    <section id="new-cars" class="bg-slate-100 py-28">
       <div class="container mx-auto overflow-hidden">
         <app-section-header
           header_content="newest cars"
@@ -181,7 +182,9 @@
               <div class="w-full lg:w-7/12 lg:px-6 flex justify-center">
                 <img :src="car.image" alt="img" />
               </div>
-              <div class="my-4 font-poppins select-none w-full lg:w-5/12 lg:px-6">
+              <div
+                class="my-4 text-center font-poppins select-none w-full lg:w-5/12 lg:px-6 lg:text-start"
+              >
                 <h2 class="capitalize mb-6 text-3xl font-semibold text-gray-600">
                   <a :href="car.detailsLink"> {{ car.title }} </a>
                 </h2>
@@ -200,7 +203,7 @@
       </div>
     </section>
 
-    <section class="py-28">
+    <section id="featured-cars" class="py-28">
       <div class="container mx-auto">
         <app-section-header
           header_content="featured cars"
@@ -229,185 +232,101 @@
 
         <div class="pt-24 px-4 flex justify-center">
           <swiper
-            :slidesPerView="3"
+            :slidesPerView="slidesPerView"
             :spaceBetween="30"
             :loop="true"
             :modules="modules"
             class="mySwiper"
           >
-            <swiper-slide>
-              <app-post-card :have_zheget="false" box_size_classes="bg-slate-100 w-full">
-                <template v-slot:image_part>
-                  <img src="../assets/images/clients/c1.png" />
-                </template>
-                <template v-slot:first_part>
-                  <p
-                    class="select-none text-gray-500 text-center text-base truncate-lines-4 group-hover:text-slate-100"
-                  >
-                    Sed ut pers unde omnis iste natus error sit voluptatem accusantium dolor laudan
-                    rem aperiam, eaque ipsa quae ab illo inventore verit.
-                  </p>
-                </template>
-                <template v-slot:second_part>
-                  <h2
-                    class="select-none text-gray-600 text-center text-base font-bold truncate group-hover:text-slate-100"
-                  >
-                    Tomas Lili
-                  </h2>
-                  <h4
-                    class="select-none text-gray-600 text-center text-base font-bold truncate group-hover:text-slate-100"
-                  >
-                    New York
-                  </h4>
-                </template>
-              </app-post-card>
-            </swiper-slide>
-            <swiper-slide>
-              <app-post-card :have_zheget="false" box_size_classes="bg-slate-100 w-full">
-                <template v-slot:image_part>
-                  <img src="../assets/images/clients/c2.png" />
-                </template>
-                <template v-slot:first_part>
-                  <p
-                    class="select-none text-gray-500 text-center text-base truncate-lines-4 group-hover:text-slate-100"
-                  >
-                    Sed ut pers unde omnis iste natus error sit voluptatem accusantium dolor laudan
-                    rem aperiam, eaque ipsa quae ab illo inventore verit.
-                  </p>
-                </template>
-                <template v-slot:second_part>
-                  <h2
-                    class="select-none text-gray-600 text-center text-base font-bold truncate group-hover:text-slate-100"
-                  >
-                    Tomas Lili
-                  </h2>
-                  <h4
-                    class="select-none text-gray-600 text-center text-base font-bold truncate group-hover:text-slate-100"
-                  >
-                    New York
-                  </h4>
-                </template>
-              </app-post-card>
-            </swiper-slide>
-            <swiper-slide>
-              <app-post-card :have_zheget="false" box_size_classes="bg-slate-100 w-full">
-                <template v-slot:image_part>
-                  <img src="../assets/images/clients/c3.png" />
-                </template>
-                <template v-slot:first_part>
-                  <p
-                    class="select-none text-gray-500 text-center text-base truncate-lines-4 group-hover:text-slate-100"
-                  >
-                    Sed ut pers unde omnis iste natus error sit voluptatem accusantium dolor laudan
-                    rem aperiam, eaque ipsa quae ab illo inventore verit.
-                  </p>
-                </template>
-                <template v-slot:second_part>
-                  <h2
-                    class="select-none text-gray-600 text-center text-base font-bold truncate group-hover:text-slate-100"
-                  >
-                    Tomas Lili
-                  </h2>
-                  <h4
-                    class="select-none text-gray-600 text-center text-base font-bold truncate group-hover:text-slate-100"
-                  >
-                    New York
-                  </h4>
-                </template>
-              </app-post-card>
-            </swiper-slide>
-
-            <swiper-slide>
-              <app-post-card :have_zheget="false" box_size_classes="bg-slate-100 w-full">
-                <template v-slot:image_part>
-                  <img src="../assets/images/clients/c1.png" />
-                </template>
-                <template v-slot:first_part>
-                  <p
-                    class="select-none text-gray-500 text-center text-base truncate-lines-4 group-hover:text-slate-100"
-                  >
-                    Sed ut pers unde omnis iste natus error sit voluptatem accusantium dolor laudan
-                    rem aperiam, eaque ipsa quae ab illo inventore verit.
-                  </p>
-                </template>
-                <template v-slot:second_part>
-                  <h2
-                    class="select-none text-gray-600 text-center text-base font-bold truncate group-hover:text-slate-100"
-                  >
-                    Tomas Lili
-                  </h2>
-                  <h4
-                    class="select-none text-gray-600 text-center text-base font-bold truncate group-hover:text-slate-100"
-                  >
-                    New York
-                  </h4>
-                </template>
-              </app-post-card>
-            </swiper-slide>
-            <swiper-slide>
-              <app-post-card
-                class="bg-g"
-                :have_zheget="false"
-                box_size_classes="bg-slate-100 w-full"
-              >
-                <template v-slot:image_part>
-                  <img src="../assets/images/clients/c2.png" />
-                </template>
-                <template v-slot:first_part>
-                  <p
-                    class="select-none text-gray-500 text-center text-base truncate-lines-4 group-hover:text-slate-100"
-                  >
-                    Sed ut pers unde omnis iste natus error sit voluptatem accusantium dolor laudan
-                    rem aperiam, eaque ipsa quae ab illo inventore verit.
-                  </p>
-                </template>
-                <template v-slot:second_part>
-                  <h2
-                    class="select-none text-gray-600 text-center text-base font-bold truncate group-hover:text-slate-100"
-                  >
-                    Tomas Lili
-                  </h2>
-                  <h4
-                    class="select-none text-gray-600 text-center text-base font-bold truncate group-hover:text-slate-100"
-                  >
-                    New York
-                  </h4>
-                </template>
-              </app-post-card>
-            </swiper-slide>
-            <swiper-slide>
-              <app-post-card :have_zheget="false" box_size_classes="bg-slate-100 w-full">
-                <template v-slot:image_part>
-                  <img src="../assets/images/clients/c3.png" />
-                </template>
-                <template v-slot:first_part>
-                  <p
-                    class="select-none text-gray-500 text-center text-base truncate-lines-4 group-hover:text-slate-100"
-                  >
-                    Sed ut pers unde omnis iste natus error sit voluptatem accusantium dolor laudan
-                    rem aperiam, eaque ipsa quae ab illo inventore verit.
-                  </p>
-                </template>
-                <template v-slot:second_part>
-                  <h2
-                    class="select-none text-gray-600 text-center text-base font-bold truncate group-hover:text-slate-100"
-                  >
-                    Tomas Lili
-                  </h2>
-                  <h4
-                    class="select-none text-gray-600 text-center text-base font-bold truncate group-hover:text-slate-100"
-                  >
-                    New York
-                  </h4>
-                </template>
-              </app-post-card>
-            </swiper-slide>
+            <template v-for="i in 2" :key="i">
+              <swiper-slide>
+                <app-post-card :have_zheget="false" box_size_classes="bg-slate-100 w-full">
+                  <template v-slot:image_part>
+                    <img src="../assets/images/clients/c1.png" />
+                  </template>
+                  <template v-slot:first_part>
+                    <p
+                      class="select-none text-gray-500 text-center text-base truncate-lines-4 group-hover:text-slate-100"
+                    >
+                      Sed ut pers unde omnis iste natus error sit voluptatem accusantium dolor
+                      laudan rem aperiam, eaque ipsa quae ab illo inventore verit.
+                    </p>
+                  </template>
+                  <template v-slot:second_part>
+                    <h2
+                      class="select-none text-gray-600 text-center text-base font-bold truncate group-hover:text-slate-100"
+                    >
+                      Tomas Lili
+                    </h2>
+                    <h4
+                      class="select-none text-gray-600 text-center text-base font-bold truncate group-hover:text-slate-100"
+                    >
+                      New York
+                    </h4>
+                  </template>
+                </app-post-card>
+              </swiper-slide>
+              <swiper-slide>
+                <app-post-card :have_zheget="false" box_size_classes="bg-slate-100 w-full">
+                  <template v-slot:image_part>
+                    <img src="../assets/images/clients/c2.png" />
+                  </template>
+                  <template v-slot:first_part>
+                    <p
+                      class="select-none text-gray-500 text-center text-base truncate-lines-4 group-hover:text-slate-100"
+                    >
+                      Sed ut pers unde omnis iste natus error sit voluptatem accusantium dolor
+                      laudan rem aperiam, eaque ipsa quae ab illo inventore verit.
+                    </p>
+                  </template>
+                  <template v-slot:second_part>
+                    <h2
+                      class="select-none text-gray-600 text-center text-base font-bold truncate group-hover:text-slate-100"
+                    >
+                      romi rain
+                    </h2>
+                    <h4
+                      class="select-none text-gray-600 text-center text-base font-bold truncate group-hover:text-slate-100"
+                    >
+                      london
+                    </h4>
+                  </template>
+                </app-post-card>
+              </swiper-slide>
+              <swiper-slide>
+                <app-post-card :have_zheget="false" box_size_classes="bg-slate-100 w-full">
+                  <template v-slot:image_part>
+                    <img src="../assets/images/clients/c3.png" />
+                  </template>
+                  <template v-slot:first_part>
+                    <p
+                      class="select-none text-gray-500 text-center text-base truncate-lines-4 group-hover:text-slate-100"
+                    >
+                      Sed ut pers unde omnis iste natus error sit voluptatem accusantium dolor
+                      laudan rem aperiam, eaque ipsa quae ab illo inventore verit.
+                    </p>
+                  </template>
+                  <template v-slot:second_part>
+                    <h2
+                      class="select-none text-gray-600 text-center text-base font-bold truncate group-hover:text-slate-100"
+                    >
+                      john doe
+                    </h2>
+                    <h4
+                      class="select-none text-gray-600 text-center text-base font-bold truncate group-hover:text-slate-100"
+                    >
+                      washington
+                    </h4>
+                  </template>
+                </app-post-card>
+              </swiper-slide>
+            </template>
           </swiper>
         </div>
       </div>
     </section>
 
-    <section class="py-28">
+    <section id="brands" class="py-28">
       <div class="container mx-auto">
         <div class="px-4 flex justify-center">
           <app-infinite-carousel :items_count="6" @item_width="set_width">
@@ -437,10 +356,13 @@
 </template>
 
 <script setup lang="ts">
+import { ref, onMounted, onUnmounted } from 'vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import 'swiper/css'
 import 'swiper/css/pagination'
 import { Pagination } from 'swiper/modules'
+import type { SwiperModule } from 'swiper/types'
+import type { IProduct, ICar } from '@/types'
 
 import AppButton from '../components/AppButton.vue'
 import AppFormSelectBox from '../components/AppFormSelectBox.vue'
@@ -449,9 +371,8 @@ import AppSectionHeader from '../components/AppSectionHeader.vue'
 import AppRegularCarousel from '../components/AppRegularCarousel.vue'
 import AppProductCard from '../components/AppProductCard.vue'
 import AppInfiniteCarousel from '@/components/AppInfiniteCarousel.vue'
-import { ref } from 'vue'
 
-const modules = [Pagination]
+const modules: SwiperModule[] = [Pagination]
 const year_options: string[] = ['Year', '2045', '2044', '2043']
 const body_style_options: string[] = ['Style', 'Sedan', 'Van', 'RoadSter']
 const make_options: string[] = ['Make', 'Toyota', 'Holden', 'Maecedes-Benz']
@@ -459,7 +380,7 @@ const car_condition_options: string[] = ['Condition', 'Ok', 'Broken', 'Not Exist
 const model_options: string[] = ['Model', 'Kia-Rio', 'Mitsubishi', 'Ford']
 const price_options: string[] = ['Price', '$2500', '$5000', '$7500']
 
-const cars = [
+const cars: ICar[] = [
   {
     title: 'chevrolet camaro za100',
     image: '/images/new-cars-model/ncm1.png',
@@ -483,7 +404,7 @@ const cars = [
   }
 ]
 
-const products = [
+const products: IProduct[] = [
   {
     title: 'BMW 6-Series Gran Coupe',
     link: '#',
@@ -502,7 +423,7 @@ const products = [
     ]
   },
   {
-    title: 'BMW 6-Series Gran Coupe',
+    title: 'BMW 8-Series Coupe',
     link: '#',
     image: '/images/featured-cars/fc2.png',
     price: 85000,
@@ -511,28 +432,55 @@ const products = [
     tags: ['Model 2017 3100 Mi 240HP', 'automatic']
   },
   {
-    title: 'BMW 6-Series Gran Coupe',
+    title: 'Chevrolet Camaro WMV20',
     link: '#',
     image: '/images/featured-cars/fc3.png',
-    price: 85000,
+    price: 66575,
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vitae ante vel eros fermentum faucibus sit amet euismod lorem.',
     tags: ['Model 2017 3100 Mi 240HP', 'automatic']
   },
   {
-    title: 'BMW 6-Series Gran Coupe',
+    title: 'Lamborghini V520',
     link: '#',
     image: '/images/featured-cars/fc4.png',
-    price: 85000,
+    price: 125250,
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vitae ante vel eros fermentum faucibus sit amet euismod lorem.',
     tags: ['Model 2017 3100 Mi 240HP', 'automatic']
   },
   {
-    title: 'BMW 6-Series Gran Coupe',
+    title: 'Audi A3 Sedan',
     link: '#',
     image: '/images/featured-cars/fc5.png',
-    price: 85000,
+    price: 95500,
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vitae ante vel eros fermentum faucibus sit amet euismod lorem.',
+    tags: ['Model 2017 3100 Mi 240HP', 'automatic']
+  },
+  {
+    title: 'Infiniti Z5',
+    link: '#',
+    image: '/images/featured-cars/fc6.png',
+    price: 36850,
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vitae ante vel eros fermentum faucibus sit amet euismod lorem.',
+    tags: ['Model 2017 3100 Mi 240HP', 'automatic']
+  },
+  {
+    title: 'Porsche 718 Cayman',
+    link: '#',
+    image: '/images/featured-cars/fc7.png',
+    price: 48500,
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vitae ante vel eros fermentum faucibus sit amet euismod lorem.',
+    tags: ['Model 2017 3100 Mi 240HP', 'automatic']
+  },
+  {
+    title: 'BMW Xseries-6',
+    link: '#',
+    image: '/images/featured-cars/fc8.png',
+    price: 75800,
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vitae ante vel eros fermentum faucibus sit amet euismod lorem.',
     tags: ['Model 2017 3100 Mi 240HP', 'automatic']
@@ -555,6 +503,22 @@ const items_width = ref<number>(0)
 const set_width = (width: number) => {
   items_width.value = width
 }
+
+const slidesPerView = ref<number>(1)
+function setSlidesPerView(): void {
+  if (window.innerWidth < 767) slidesPerView.value = 1
+  else if (window.innerWidth < 992) slidesPerView.value = 2
+  else slidesPerView.value = 3
+}
+
+onMounted(() => {
+  setSlidesPerView()
+  window.addEventListener('resize', setSlidesPerView)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('resize', setSlidesPerView)
+})
 </script>
 
 <style scoped>
@@ -577,9 +541,6 @@ const set_width = (width: number) => {
   height: 100%;
   background: rgba(42, 45, 84, 0.6);
 }
-
-/* .swiper {
-} */
 
 .swiper-slide {
   min-width: 300px;

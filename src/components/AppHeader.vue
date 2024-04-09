@@ -22,34 +22,70 @@
         class="font-poppins font-semibold text-lg text-slate-100 bg-black border-t-2 border-gray-700 mt-4 lg:bg-transparent lg:flex lg:space-x-5 lg:mt-0 lg:border-none lg:text-base lg:font-normal"
       >
         <li
-          class="py-3 px-3 hover:bg-slate-100 hover:bg-opacity-10 hover:text-blue-600 hover:cursor-pointer transition-all duration-300 lg:hover:bg-transparent lg:duration-500"
+          class="flex hover:bg-slate-100 hover:bg-opacity-10 hover:text-blue-600 hover:cursor-pointer transition-all duration-300 lg:hover:bg-transparent lg:duration-500"
+          @click.prevent="setActiveSection()"
         >
-          <a href="#home">HOME</a>
+          <router-link
+            :to="{ name: 'home', hash: '#home' }"
+            :class="[{ 'link-active': activeSection === '/#home' || activeSection === '/' }]"
+            class="py-3 px-3 transition-all duration-300"
+            >HOME</router-link
+          >
         </li>
         <li
-          class="py-3 px-3 hover:bg-slate-100 hover:bg-opacity-10 hover:text-blue-600 hover:cursor-pointer transition-all duration-300 lg:hover:bg-transparent lg:duration-500"
+          class="flex hover:bg-slate-100 hover:bg-opacity-10 hover:text-blue-600 hover:cursor-pointer transition-all duration-300 lg:hover:bg-transparent lg:duration-500"
+          @click.prevent="setActiveSection()"
         >
-          <a href="#service">SERVICE</a>
+          <router-link
+            :to="{ name: 'home', hash: '#service' }"
+            :class="[{ 'link-active': activeSection === '/#service' }]"
+            class="py-3 px-3 transition-all duration-300"
+            >SERVICE</router-link
+          >
         </li>
         <li
-          class="py-3 px-3 hover:bg-slate-100 hover:bg-opacity-10 hover:text-blue-600 hover:cursor-pointer transition-all duration-300 lg:hover:bg-transparent lg:duration-500"
+          class="flex hover:bg-slate-100 hover:bg-opacity-10 hover:text-blue-600 hover:cursor-pointer transition-all duration-300 lg:hover:bg-transparent lg:duration-500"
+          @click.prevent="setActiveSection()"
         >
-          <a href="#featured-cars">FEATURED CARS</a>
+          <router-link
+            :to="{ name: 'home', hash: '#featured-cars' }"
+            :class="[{ 'link-active': activeSection === '/#featured-cars' }]"
+            class="py-3 px-3 transition-all duration-300"
+            >FEATURED CARS</router-link
+          >
         </li>
         <li
-          class="py-3 px-3 hover:bg-slate-100 hover:bg-opacity-10 hover:text-blue-600 hover:cursor-pointer transition-all duration-300 lg:hover:bg-transparent lg:duration-500"
+          class="flex hover:bg-slate-100 hover:bg-opacity-10 hover:text-blue-600 hover:cursor-pointer transition-all duration-300 lg:hover:bg-transparent lg:duration-500"
+          @click.prevent="setActiveSection()"
         >
-          <a href="#new-cars">NEW CARS</a>
+          <router-link
+            :to="{ name: 'home', hash: '#new-cars' }"
+            :class="[{ 'link-active': activeSection === '/#new-cars' }]"
+            class="py-3 px-3 transition-all duration-300"
+            >NEW CARS</router-link
+          >
         </li>
         <li
-          class="py-3 px-3 hover:bg-slate-100 hover:bg-opacity-10 hover:text-blue-600 hover:cursor-pointer transition-all duration-300 lg:hover:bg-transparent lg:duration-500"
+          class="flex hover:bg-slate-100 hover:bg-opacity-10 hover:text-blue-600 hover:cursor-pointer transition-all duration-300 lg:hover:bg-transparent lg:duration-500"
+          @click.prevent="setActiveSection()"
         >
-          <a href="#brand">BRANDS</a>
+          <router-link
+            :to="{ name: 'home', hash: '#brands' }"
+            :class="[{ 'link-active': activeSection === '/#brands' }]"
+            class="py-3 px-3 transition-all duration-300"
+            >BRANDS</router-link
+          >
         </li>
         <li
-          class="py-3 px-3 hover:bg-slate-100 hover:bg-opacity-10 hover:text-blue-600 hover:cursor-pointer transition-all duration-300 lg:hover:bg-transparent lg:duration-500"
+          class="flex hover:bg-slate-100 hover:bg-opacity-10 hover:text-blue-600 hover:cursor-pointer transition-all duration-300 lg:hover:bg-transparent lg:duration-500"
+          @click.prevent="setActiveSection()"
         >
-          <a href="#contact">CONTACT</a>
+          <router-link
+            :to="{ name: 'home', hash: '#contact' }"
+            :class="[{ 'link-active': activeSection === '/#contact' }]"
+            class="py-3 px-3 transition-all duration-300"
+            >CONTACT</router-link
+          >
         </li>
       </ul>
     </div>
@@ -58,6 +94,8 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { useRoute } from 'vue-router'
+const route = useRoute()
 
 const is_navbar_closed = ref<boolean>(true)
 const is_static_header = ref<boolean | null>(null)
@@ -78,10 +116,35 @@ function toggleNavbar() {
   is_navbar_closed.value = !is_navbar_closed.value
 }
 
+const activeSection = ref<string>('/')
+const isManualScrolling = ref<boolean>(true)
+function setActiveSection() {
+  isManualScrolling.value = false
+  activeSection.value = route.fullPath
+  setTimeout(() => {
+    isManualScrolling.value = true
+  }, 1000)
+}
+
 const handleResizeAndScroll = () => {
   if (window.innerWidth < 1024) is_static_header.value = true
   else if (window.scrollY >= 100) is_static_header.value = true
   else is_static_header.value = false
+
+  if (!isManualScrolling.value) return
+  const sections = ['home', 'service', 'featured-cars', 'new-cars', 'brands', 'contact']
+  const currentSection = sections.find((section) => {
+    const el = document.getElementById(section)
+    if (el) {
+      const rect = el.getBoundingClientRect()
+      return rect.top <= 500 && rect.bottom > 0
+    }
+    return false
+  })
+
+  if (currentSection) {
+    activeSection.value = `/#${currentSection}`
+  }
 }
 
 const static_header_class = computed(() => {

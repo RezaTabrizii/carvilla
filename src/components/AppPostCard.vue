@@ -1,5 +1,5 @@
 <template>
-  <div :class="box_size_classes" style="width: 100% !important">
+  <div :class="box_size_classes">
     <div
       class="group single-service-item m-2 py-16 px-7 border border-gray-300 rounded-sm flex flex-col justify-center items-center font-poppins transition-all duration-500 hover:bg-blue-600 hover:shadow-md"
     >
