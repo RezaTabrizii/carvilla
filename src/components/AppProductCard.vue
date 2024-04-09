@@ -14,7 +14,7 @@
       <h2 class="text-lg font-medium capitalize text-slate-600 mb-2 truncate">
         <a :href="product_link">{{ product_title }}</a>
       </h2>
-      <h3 class="text-slate-600 font-semibold mb-2">${{ product_price }}</h3>
+      <h3 class="text-slate-600 font-semibold mb-2">${{ formatNumber(product_price) }}</h3>
       <p class="text-slate-500 text-sm mb-4 truncate-lines-3">
         {{ product_description }}
       </p>
@@ -78,4 +78,11 @@ defineProps({
     default: 'border-blue-400 hover:bg-blue-400'
   }
 })
+
+function formatNumber(value: number) {
+  // Convert value to string
+  let strValue = value.toString()
+  // Use regex to add comma as thousands separator
+  return strValue.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+}
 </script>
